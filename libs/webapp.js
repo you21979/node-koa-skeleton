@@ -1,12 +1,12 @@
 'use strict'; 
 const koa = require('koa');
-const jsonBody = require('koa-json-body');
+const koaBody = require('koa-body');
 const ip = require('request-ip');
 const start = exports.start = dirname => {
     const app = koa();
 
     app
-        .use(jsonBody({ limit: '10kb' }))
+        .use(koaBody({}))
         .use(function *(next){
             this.client = {
                 remote_addr : ip.getClientIp(this.req),
