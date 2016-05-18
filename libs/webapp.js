@@ -1,8 +1,17 @@
 'use strict'; 
 const koa = require('koa');
+const ip = require('request-ip');
 const start = exports.start = dirname => {
-    const apis = require(dirname + "/apis");
     const app = koa();
+
+    app.use(function *(next){
+        this.client = {
+            remote_addr : ip.getClientIp(this.req),
+        }
+        yield next;
+    })
+
+    const apis = require(dirname + "/apis");
     const base_path = '/api/v0';
     apis.forEach(api => {
         api(base_path).forEach(route => app.use(route))

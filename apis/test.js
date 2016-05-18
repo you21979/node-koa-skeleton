@@ -1,11 +1,14 @@
 const _ = require('koa-route');
-const api = module.exports = (base_path) => {
-    const current_path = base_path + '/test'
+const api = module.exports = base_path => {
+    const makePath = path => base_path + '/test' + path
     return [
-        _.get(current_path + '/test', function *(){
+        _.get(makePath('/test'), function *(){
             this.body = JSON.stringify({msg:'Hello world'});
         }),
-        _.get(current_path + '/users/:name', function *(name){
+        _.get(makePath('/ctx'), function *(){
+            this.body = JSON.stringify(this.client, null, 2);
+        }),
+        _.get(makePath('/users/:name'), function *(name){
             this.body = 'Hello, ' + name + '!';
         })
     ]

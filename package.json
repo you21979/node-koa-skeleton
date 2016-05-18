@@ -8,6 +8,7 @@
     "promise-util-mysql" : "git://github.com/you21979/node-promise-util-mysql.git",
     "koa" : "1.2.*",
     "koa-route" : "",
+    "koa-body" : "",
     "commander" : "2.8.*",
     "log4js" : "0.6.*",
     "request-ip" : "1.1.*",
