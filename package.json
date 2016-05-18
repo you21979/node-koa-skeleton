@@ -16,6 +16,7 @@
     "mysql" : "2.9.*",
     "uuid" : "2.0.*",
     "ip" : "0.3.*",
+    "moment" : "",
     "crc-32" : "0.3.*"
   },
   "readmeFilename": "README.md",
@@ -23,7 +24,6 @@
   "main": "app.js",
   "devDependencies": {
     "request-promise" : "",
-    "moment" : "",
     "mocha" : "",
     "power-assert" : ""
   },
