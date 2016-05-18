@@ -1,20 +1,21 @@
 'use strict'; 
 const koa = require('koa');
-const koaBody = require('koa-body');
+const jsonBody = require('koa-json-body');
 const ip = require('request-ip');
 const accesslog = require('./middleware/accesslog');
 
 const start = exports.start = dirname => {
-    const app = koa();
+    const app = new koa();
 
     app
-        .use(koaBody({}))
+        .use(jsonBody({ limit: '10kb' }))
         .use(accesslog('webserver'))
-        .use(function *(next){
-            this.client = {
-                remote_addr : ip.getClientIp(this.req),
-            }
-            yield next;
+        .use((ctx, next) => {
+            next().then(() => {
+                ctx.client = {
+                    remote_addr : ip.getClientIp(ctx.req),
+                }
+            })
         })
         ;
 
