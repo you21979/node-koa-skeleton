@@ -4,11 +4,11 @@
   "version": "4.0.0",
   "private": true,
   "dependencies": {
-    "promise-util-task" : "0.0.*",
-    "promise-util-mysql" : "git://github.com/you21979/node-promise-util-mysql.git",
     "koa" : "2.*",
     "koa-route" : "3.*",
     "koa-json-body" : "5.0.0-alpha.1",
+    "promise-util-task" : "0.0.*",
+    "promise-util-mysql" : "git://github.com/you21979/node-promise-util-mysql.git",
     "commander" : "2.8.*",
     "log4js" : "0.6.*",
     "request-ip" : "1.1.*",
