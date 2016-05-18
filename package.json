@@ -1,0 +1,33 @@
+{
+  "author": "you21979",
+  "name": "koa-skelton",
+  "version": "4.0.0",
+  "private": true,
+  "dependencies": {
+    "promise-util-task" : "0.0.*",
+    "promise-util-mysql" : "git://github.com/you21979/node-promise-util-mysql.git",
+    "koa" : "1.2.*",
+    "koa-route" : "",
+    "commander" : "2.8.*",
+    "log4js" : "0.6.*",
+    "request-ip" : "1.1.*",
+    "bluebird" : "2.9.*",
+    "mysql" : "2.9.*",
+    "uuid" : "2.0.*",
+    "ip" : "0.3.*",
+    "crc-32" : "0.3.*"
+  },
+  "readmeFilename": "README.md",
+  "description": "",
+  "main": "app.js",
+  "devDependencies": {
+    "request-promise" : "",
+    "moment" : "",
+    "mocha" : "",
+    "power-assert" : ""
+  },
+  "scripts": {
+    "test" : ""
+  },
+  "license": "MIT"
+}
