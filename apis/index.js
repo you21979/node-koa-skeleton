@@ -1,3 +1,4 @@
 module.exports = [
-    require('./test')
+    require('./test'),
+    require('./apikey')
 ]
