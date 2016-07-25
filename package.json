@@ -9,6 +9,7 @@
     "koa-json-body" : "5.0.0-alpha.1",
     "promise-util-task" : "0.0.*",
     "promise-util-mysql" : "git://github.com/you21979/node-promise-util-mysql.git",
+    "@you21979/simple-verify" : "0.0.x",
     "request-promise" : "",
     "commander" : "2.8.*",
     "log4js" : "0.6.*",
