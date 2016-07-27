@@ -3,19 +3,30 @@ const koa = require('koa');
 const jsonBody = require('koa-json-body');
 const ip = require('request-ip');
 const accesslog = require('./middleware/accesslog');
+const verifyCheck = require('./middleware/verify_check');
+const postCapture = require('./middleware/post_capture');
+const mysql = require("mysql");
 
 const start = exports.start = dirname => {
     const app = new koa();
+    const sv = {
+        mysqlConn : mysql.createConnection({
+            host : "localhost",
+            user : "root",
+            password : "",
+            database : "cryptobank",
+        })
+    }
 
     app
-        .use(jsonBody({ limit: '10kb' }))
+        .use(postCapture())
+        .use(verifyCheck(sv))
         .use(accesslog('webserver'))
         .use((ctx, next) => {
-            next().then(() => {
-                ctx.client = {
-                    remote_addr : ip.getClientIp(ctx.req),
-                }
-            })
+            ctx.client = {
+                remote_addr : ip.getClientIp(ctx.req),
+            }
+            next()
         })
         ;
 

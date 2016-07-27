@@ -6,6 +6,7 @@
   "dependencies": {
     "koa" : "2.*",
     "koa-route" : "3.*",
+    "raw-body" : "",
     "koa-json-body" : "5.0.0-alpha.1",
     "promise-util-task" : "0.0.*",
     "promise-util-mysql" : "git://github.com/you21979/node-promise-util-mysql.git",
