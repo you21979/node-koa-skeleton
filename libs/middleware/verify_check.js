@@ -21,8 +21,10 @@ const verifyCheck = module.exports = (sv) => (ctx, next) => {
             if(res){
                 next()
             }else{
-                ctx.body = JSON.stringify({status : 1, message : "api key error"})
+                ctx.body = JSON.stringify({status : 2, message : "apikey verify error"})
             }
+        }).catch(err => {
+            ctx.body = JSON.stringify({status : 1, message : "apikey error"})
         })
     }   
 }   
