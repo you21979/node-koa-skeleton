@@ -1,6 +1,6 @@
 'use strict'
 const Log4js = require('log4js');
-const main = require('./libs/main');
+const main = require('./framework/main');
 
 (dirname => {
     Log4js.configure(dirname + '/config/log.json');
@@ -8,6 +8,6 @@ const main = require('./libs/main');
         console.log(err.stack);
         throw err;
     })
-    return main(dirname);
+    return main(dirname + "/framework");
 })(__dirname)
 
