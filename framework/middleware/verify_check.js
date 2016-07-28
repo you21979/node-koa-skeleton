@@ -11,8 +11,10 @@ const verifyCheck = module.exports = (sv) => (ctx, next) => {
         const sign = ctx.request.header['sign'];
         const data = ctx.rawbody;
 
-        return getApiData(sv.pool, apikey).then(res => verify.check(argo, sign, res.secret, data) ).then(res => {
-            if(res){
+        return getApiData(sv.pool, apikey).then(res => {
+            var ret = verify.check(argo, sign, res.secret, data)
+            ctx.auth = res
+            if(ret){
                 next()
             }else{
                 ctx.body = JSON.stringify({status : 2, message : "apikey verify error"})

@@ -1,6 +1,6 @@
 const _ = require('koa-route');
 const rp = require('request-promise');
-const api = module.exports = base_path => {
+const api = module.exports = (base_path, sv) => {
     const makePath = path => base_path + '/test' + path
     return [
         _.get(makePath('/test'), (ctx) => {
