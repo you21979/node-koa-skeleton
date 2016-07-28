@@ -1,14 +1,8 @@
 const verify = require("@you21979/simple-verify");
 const mysql = require("mysql");
+const Query = require("query");
 
-const query = (conn, sql, params) => new Promise((resolve, reject) => {
-    conn.query(sql, params, (err, rows) => {
-        if(err) reject(err)
-        else resolve(rows)
-    })
-})
-
-const getApiData = (conn, apikey) => query(conn, "select * from accesskey where apikey=?", [apikey]).then(res => res[0])
+const getApiData = (conn, apikey) => Query.create(conn, "select * from accesskey where apikey=?", [apikey]).first()
 
 const verifyCheck = module.exports = (sv) => (ctx, next) => {
     if(ctx.request.method == 'POST'){ 
