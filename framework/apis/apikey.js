@@ -1,7 +1,5 @@
 const _ = require('koa-route');
 
-const verify = require("@you21979/simple-verify");
-
 const api = module.exports = base_path => {
     const makePath = path => base_path + '/apikey' + path
     return [
