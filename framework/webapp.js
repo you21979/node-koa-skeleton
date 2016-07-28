@@ -10,14 +10,14 @@ const mysql = require("mysql");
 const start = exports.start = dirname => {
     const app = new koa();
     const sv = {
-        mysqlConn : mysql.createConnection({
+        pool : mysql.createPool({
+            connectionLimit : 10,
             host : "localhost",
             user : "root",
             password : "",
             database : "cryptobank",
-        })
+        }),
     }
-
     app
         .use(postCapture())
         .use(verifyCheck(sv))
@@ -29,7 +29,6 @@ const start = exports.start = dirname => {
             next()
         })
         ;
-
     const apis = require(dirname + "/apis");
     const base_path = '/api/v0';
     apis.forEach(api => {

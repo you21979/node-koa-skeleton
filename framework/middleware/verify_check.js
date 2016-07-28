@@ -11,7 +11,7 @@ const verifyCheck = module.exports = (sv) => (ctx, next) => {
         const sign = ctx.request.header['sign'];
         const data = ctx.rawbody;
 
-        return getApiData(sv.mysqlConn, apikey).then(res => verify.check(argo, sign, res.secret, data) ).then(res => {
+        return getApiData(sv.pool, apikey).then(res => verify.check(argo, sign, res.secret, data) ).then(res => {
             if(res){
                 next()
             }else{
